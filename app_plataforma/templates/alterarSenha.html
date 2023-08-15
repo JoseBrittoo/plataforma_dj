@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="col-6 mt-4 m-auto text-center">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Alterar Senha</h1>
+        <form name="form-alterar-senha" id="formAlterarSenha" method="post">
+            {% csrf_token %}
+            <input class="form-control mt-4" type="password" name="new_password1" id="new_password1" placeholder="Nova Senha:">
+            <input class="form-control mt-4" type="password" name="new_password2" id="new_password2" placeholder="Confirmar Nova Senha:">
+            <input class="btn btn-dark mt-4" type="submit" value="Alterar Senha">
+        </form>
+    </div>
+{% endblock %}

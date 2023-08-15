@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'flogin.css' %}">
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <div class="division">
+                        <div class="row">
+                            <div class="col-12 text-center"><span>CADASTRO</span></div>
+                        </div>
+                    </div>
+                    <form class="myform" method="post" action="/usuario/">
+                        {% if msg %}
+                            <div class="alert {{class}}">
+                                {{msg}}
+                            </div>
+                        {% endif %}
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Nome Completo:">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" name="user" id="user" placeholder="Nome de Usuário:">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email:">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Senha:">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="password" class="form-control" name="password-conf" id="password-conf" placeholder="Repita a Senha:">
+                        </div>
+                        <div class="form-group mt-3 text-center">
+                            <button class="btn btn-block btn-primary btn-lg" type="submit">Cadastrar</button>
+                        </div>
+                        <p class="mb-0 mt-4 text-center">
+                            Fazer
+                            <a href="{% url 'flogin' %}" class="link">Login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
