@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
@@ -32,15 +31,26 @@ def flogin(request):
 
 #Processar o login
 def dlogin(request):
-    data = {}
-    user = authenticate(username=request.POST['user'], password=request.POST['password'])
-    if user is not None:
-        login(request, user)
-        return redirect('/paginaInicial/')
-    else:
-        data['msg'] = 'Senha ou usuario incorreto!'
-        data['class'] = 'alert-danger'
-        return render(request, 'flogin.html', data)
+    if request.method == 'POST':
+        username = request.POST['user']
+        password = request.POST['password']
+        user_type = request.POST['user-type']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+
+            if user_type == 'proprietario':
+                return redirect('pgInical_proprietario')
+            elif user_type == 'aluno':
+                return redirect('pgInicial_aluno')
+            elif user_type == 'afiliado':
+                return redirect('pgInicial_afiliado')
+        else:
+            msg = 'Senha ou usuário incorretos!'
+            return render(request, 'flogin.html', {'msg': msg, 'class': 'alert-danger'})
+
+    return render(request, 'flogin.html')
 
 #Página inical do sistema
 def paginaInicial(request):
@@ -49,7 +59,7 @@ def paginaInicial(request):
 #Logout do sistema
 def logouts(request):
     logout(request)
-    return redirect('/flogin/')
+    return redirect('/')
 
 #Alterar senha
 def alterarSenha(request):
