@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .models import Curso, Modulo
+from .forms import CursoForm, ModuloFormSet
 
 # Create your views here.
 def home(request):
@@ -76,4 +78,31 @@ def alterarSenha(request):
         return render(request, 'alterarSenha.html', data)
             
     return render(request, 'alterarSenha.html')
-    
+
+#Cadastrar curso
+def cadcurso(request):
+    if request.method == 'POST':
+        form = CursoForm(request.POST)
+        formset_modulos = ModuloFormSet(request.POST, prefix='modulos')
+
+        if form.is_valid() and formset_modulos.is_valid():
+            # Salvar o curso principal
+            curso = form.save()
+
+            # Salvar os módulos associados ao curso principal
+            for form_modulo in formset_modulos:
+                if form_modulo.cleaned_data:
+                    modulo = form_modulo.save(commit=False)
+                    modulo.curso = curso
+                    modulo.save()
+
+            return redirect('pgInicial')  # Redirecionar para uma página de sucesso
+
+    else:
+        form = CursoForm()
+        formset_modulos = ModuloFormSet(prefix='modulos')
+
+    return render(request, 'cadcurso.html', {
+        'form': form,
+        'formset_modulos': formset_modulos,
+    })
