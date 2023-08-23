@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path
-from app_plataforma.views import home, cadusuario, cadcurso, usuario, flogin, dlogin, paginaInicial, logouts, alterarSenha
+from app_plataforma.views import home, cadusuario, usuario, flogin, dlogin, paginaInicial, logouts, alterarSenha, cadcurso, pgInicial_proprietario, pgInicial_Aluno, pgInicial_afiliado
 #from app_plataforma import views
 
 urlpatterns = [
@@ -13,6 +13,5 @@ urlpatterns = [
     path('dlogin/', dlogin, name = 'dlogin'),
     path('paginaInicial/', paginaInicial),
     path('logouts/', logouts, name = 'logouts'),
-    path('alterarSenha/', alterarSenha, name = 'alterarSenha'),
-    path('cadcurso/', cadcurso, name = 'cadcurso')
+    path('alterarSenha/', alterarSenha, name = 'alterarSenha')
 ]
