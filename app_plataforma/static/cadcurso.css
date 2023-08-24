@@ -1,0 +1,65 @@
+/* cadcurso.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #19123B; /* Cor de fundo azul */
+}
+
+.container {
+  max-width: 600px; /* Aumente ou diminua o valor conforme necessário */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc; /* Borda cinza */
+  border-radius: 5px;
+  background-color: #212042; /* Cor de fundo azul */
+  color: #fff; /* Cor do texto branco */
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  color: #fff; /* Cor do texto branco */
+}
+
+form {
+  padding: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px; 
+  color: hsl(258, 44%, 69%); /* Cor do texto do rótulo */
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; /* Aumentei a margem inferior para mais espaço */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: hsl(263, 87%, 22%);
+  color: #fff;
+  padding: 12px 20px; 
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 30px; 
+}
+
+button[type="submit"]:hover {
+  background-color: hsl(258, 44%, 69%);
+}

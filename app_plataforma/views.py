@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .models import Curso, Modulo
+from .forms import CursoForm, ModuloFormSet
 
 # Create your views here.
 def home(request):
@@ -31,26 +33,16 @@ def flogin(request):
 
 #Processar o login
 def dlogin(request):
-    if request.method == 'POST':
-        username = request.POST['user']
-        password = request.POST['password']
-        user_type = request.POST['user-type']
+    data = {}
+    user = authenticate(username=request.POST['user'], password=request.POST['password'])
+    if user is not None:
+        login(request, user)
+        return redirect('/paginaInicial/')
+    else:
+        data['msg'] = 'Senha ou usuario incorreto!'
+        data['class'] = 'alert-danger'
+        return render(request, 'flogin.html', data)
 
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-
-            if user_type == 'proprietario':
-                return redirect('pgInical_proprietario')
-            elif user_type == 'aluno':
-                return redirect('pgInicial_aluno')
-            elif user_type == 'afiliado':
-                return redirect('pgInicial_afiliado')
-        else:
-            msg = 'Senha ou usuário incorretos!'
-            return render(request, 'flogin.html', {'msg': msg, 'class': 'alert-danger'})
-
-    return render(request, 'flogin.html')
 
 #Página inical do sistema
 def paginaInicial(request):
@@ -86,4 +78,31 @@ def alterarSenha(request):
         return render(request, 'alterarSenha.html', data)
             
     return render(request, 'alterarSenha.html')
-    
+
+#Cadastrar curso
+def cadcurso(request):
+    if request.method == 'POST':
+        form = CursoForm(request.POST)
+        formset_modulos = ModuloFormSet(request.POST, prefix='modulos')
+
+        if form.is_valid() and formset_modulos.is_valid():
+            # Salvar o curso principal
+            curso = form.save()
+
+            # Salvar os módulos associados ao curso principal
+            for form_modulo in formset_modulos:
+                if form_modulo.cleaned_data:
+                    modulo = form_modulo.save(commit=False)
+                    modulo.curso = curso
+                    modulo.save()
+
+            return redirect('pgInicial')  # Redirecionar para uma página de sucesso
+
+    else:
+        form = CursoForm()
+        formset_modulos = ModuloFormSet(prefix='modulos')
+
+    return render(request, 'cadcurso.html', {
+        'form': form,
+        'formset_modulos': formset_modulos,
+    })
