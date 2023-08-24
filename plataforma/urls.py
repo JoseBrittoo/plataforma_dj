@@ -14,7 +14,5 @@ urlpatterns = [
     path('paginaInicial/', paginaInicial),
     path('logouts/', logouts, name = 'logouts'),
     path('alterarSenha/', alterarSenha, name = 'alterarSenha'),
-    path('pgInical_proprietario/', pgInicial_proprietario name='pgInical_proprietario'),
-    path('pgInicial_aluno/', pgInicial_aluno, name='pgInicial_aluno'),
-    path('pgInicial_afiliado/', pgInicial_afiliado, name='pgInicial_afiliado')
+    path('cadcurso/', cadcurso, name = 'cadcurso'),
 ]
