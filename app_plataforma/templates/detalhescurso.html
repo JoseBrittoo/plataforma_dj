@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Detalhes do Curso</h1>
+<h2>{{ curso.nome_curso }}</h2>
+<p>Descrição: {{ curso.descricao }}</p>
+<p>Valor: R$ {{ curso.preco }}</p>
+<p>Nível: {{ curso.nivel }}</p>
+<p>Total de Horas: {{ curso.total_horas }}</p>
+<p>Nome do Proprietário: {{ curso.nome_proprietario }}</p>
+<h3>Módulos</h3>
+<ul>
+    {% for modulo in curso.modulos.all %}
+        <li>
+            <h4>{{ modulo.nome_curso }}</h4>
+            <p>Conteúdo: {{ modulo.conteudo }}</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

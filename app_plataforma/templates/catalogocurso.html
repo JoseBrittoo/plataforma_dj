@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Catálogo de Cursos</h1>
+<ul>
+    {% for curso in cursos %}
+        <li>
+            <h2>{{ curso.nome_curso }}</h2>
+            <p>Descrição: {{ curso.descricao }}</p>
+            <p>Valor: R$ {{ curso.preco }}</p>
+            <a href="{% url 'detalhescurso' curso.id %}">Detalhes</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Curso, Modulo
@@ -96,8 +96,11 @@ def cadcurso(request):
                     modulo.curso = curso
                     modulo.save()
 
-            return redirect('pgInicial')  # Redirecionar para uma página de sucesso
-
+            print("Curso cadastrado com sucesso!")
+            return redirect('catalogocurso')  # Redirecionar para uma página de sucesso
+        else:
+            print("Formulário inválido!")
+            
     else:
         form = CursoForm()
         formset_modulos = ModuloFormSet(prefix='modulos')
@@ -106,3 +109,12 @@ def cadcurso(request):
         'form': form,
         'formset_modulos': formset_modulos,
     })
+#Sobre o catalogo de cursos
+def catalogocurso(request):
+    cursos = Curso.objects.all()
+    return render(request, 'catalogocurso.html', {'cursos': cursos})
+
+#Detalhes dos cursos
+def detalhescurso(request, curso_id):
+    curso = get_object_or_404(Curso, id=curso_id)
+    return render(request, 'detalhescurso.html', {'curso': curso})
