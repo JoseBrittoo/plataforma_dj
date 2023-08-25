@@ -12,7 +12,8 @@
                             <div class="col-12 text-center"><span>Recuperar Senha</span></div>
                         </div>
                     </div>
-                    <form class="myform">
+                    <form method="post" action="{% url 'reset_password' %}" class="myform">
+                        {% csrf_token %}
                         <div class="form-group mt-4 text-center">
                             <p>Informe o seu email para cadastrar uma nova senha.</p>
                         </div>
@@ -21,7 +22,7 @@
                             <i class="input-icon uil uil-envelope"></i>
                         </div>
                         <div class="text-center mt-4">
-                            <input class="btn btn-lilac btn-lg" type="submit" value="Enviar">
+                            <button class="btn btn-lilac btn-lg" type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>

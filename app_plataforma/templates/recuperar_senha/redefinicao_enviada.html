@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static 'recuperar_senha_enviado.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'redefinicao_enviada.css' %}">
     <div class="container">
         <div class="row d-flex justify-content-center mt-5">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -14,7 +14,6 @@
                     </div>
                     <div class="text-center mt-4">
                         <p>Um email foi enviado para o seu endereço de email. Por favor, verifique a sua caixa de entrada para instruções sobre como redefinir a sua senha.</p>
-                        <a href="{% url 'flogin' %}" class="btn btn-lilac btn-lg">Voltar ao Login</a>
                     </div>
                 </div>
             </div>

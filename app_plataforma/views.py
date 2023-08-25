@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Curso, Modulo
 from .forms import CursoForm, ModuloFormSet
-from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 # Create your views here.
 def home(request):
@@ -100,8 +99,7 @@ def cadcurso(request):
             print("Curso cadastrado com sucesso!")
             return redirect('catalogocurso')  # Redirecionar para uma página de sucesso
         else:
-            print("Formulário inválido!")
-            
+            print("Formulário inválido!")        
     else:
         form = CursoForm()
         formset_modulos = ModuloFormSet(prefix='modulos')
@@ -110,6 +108,7 @@ def cadcurso(request):
         'form': form,
         'formset_modulos': formset_modulos,
     })
+
 #Sobre o catalogo de cursos
 def catalogocurso(request):
     cursos = Curso.objects.all()
@@ -120,3 +119,7 @@ def detalhescurso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     return render(request, 'detalhescurso.html', {'curso': curso})
 
+from django.contrib.auth.views import PasswordResetConfirmView
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'recuperar_senha/nova_senha.html'  # Caminho para o seu template personalizado
