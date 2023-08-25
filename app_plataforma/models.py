@@ -8,6 +8,9 @@ class Curso(models.Model):
     total_horas = models.IntegerField()
     nome_proprietario = models.CharField(max_length=100)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+        return self.nome_curso
 
 class Modulo(models.Model):
     nome_curso = models.CharField(max_length=100)
