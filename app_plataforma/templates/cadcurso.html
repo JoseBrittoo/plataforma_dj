@@ -5,6 +5,16 @@
 <h1>Cadastro de Curso</h1>
 <form class="container Curso" method="post">
     {% csrf_token %}
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class="form-group">
         <label for="nome_curso">Nome do Curso</label>
         <input type="text" id="nome_curso" name="nome_curso" required>
@@ -55,6 +65,8 @@
             for (var i = 1; i <= quantidadeModulos; i++) {
                 criarModulo(i);
             }
+            // Atualizar o campo quantidade_modulos
+            //document.getElementById('quantidade_modulos').value = quantidadeModulos + 1;
         });
         function criarModulo(moduloCount) {
             var moduloDiv = document.createElement('div');
@@ -62,9 +74,10 @@
             moduloDiv.id = `modulo-${moduloCount}`;
             moduloDiv.innerHTML = `
                 <label for="modulo_nome_${moduloCount}">Nome do Módulo:</label>
-                <input type="text" id="modulo_nome_${moduloCount}" name="modulos-${moduloCount}-nome" required>
+                <input type="text" id="modulo_nome_${moduloCount}" name="modulos-TOTAL_FORMS-nome" required>
                 <label for="modulo_conteudo_${moduloCount}">Conteúdo do Módulo:</label>
-                <textarea id="modulo_conteudo_${moduloCount}" name="modulos-${moduloCount}-conteudo" rows="4" required></textarea>
+                <textarea id="modulo_conteudo_${moduloCount}" name="modulos-TOTAL_FORMS-conteudo" rows="4" required></textarea>
+                <input type="hidden" id="id_modulos-INITIAL_FORMS" name="modulos-INITIAL_FORMS" value="0">
                 <button class="remover-modulo" data-modulo="${moduloCount}">Remover</button>
                 <button class="editar-modulo" data-modulo="${moduloCount}">Editar</button>
             `;

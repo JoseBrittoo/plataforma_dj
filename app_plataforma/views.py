@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Curso, Modulo
 from .forms import CursoForm, ModuloFormSet
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -96,10 +97,10 @@ def cadcurso(request):
                     modulo.curso = curso
                     modulo.save()
 
-            print("Curso cadastrado com sucesso!")
+            messages.success(request, 'Curso cadastrado com sucesso!')
             return redirect('catalogocurso')  # Redirecionar para uma página de sucesso
         else:
-            print("Formulário inválido!")        
+            messages.error(request, 'Formulário inválido!')      
     else:
         form = CursoForm()
         formset_modulos = ModuloFormSet(prefix='modulos')
