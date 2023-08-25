@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'redefinicao_comp.css' %}">
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <div class="division">
+                        <div class="row">
+                            <div class="col-12 text-center"><span>Redefinição Completa</span></div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <p>A sua senha foi redefinida com sucesso.</p>
+                        <a href="{% url 'flogin' %}" class="btn btn-lilac btn-lg">Acessar sua conta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

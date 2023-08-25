@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Curso, Modulo
 from .forms import CursoForm, ModuloFormSet
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 # Create your views here.
 def home(request):
@@ -118,3 +119,4 @@ def catalogocurso(request):
 def detalhescurso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     return render(request, 'detalhescurso.html', {'curso': curso})
+

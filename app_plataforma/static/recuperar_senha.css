@@ -1,0 +1,54 @@
+/* Estilos para a página de recuperação de senha */
+.card {
+    border-top: 5px solid  rgb(176,106,252);
+    background: #212042;
+    color: #57557A;
+}
+
+.division span {
+    font-weight: 600;
+    font-size: 24px;
+    color: #F2CEFF;
+}
+
+.myform {
+    padding: 0 25px 0 33px;
+}
+
+.form-control {
+    border: 1px solid #57557A;
+    border-radius: 3px;
+    background: #212042;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.form-control:focus {
+    border: 1px solid #57557A;
+    border-radius: 3px;
+    box-shadow: none;
+    background: #212042;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.link {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.btn-lilac {
+    background: linear-gradient(135deg, rgba(176,106,252,1) 39%, rgba(116,17,255,1) 101%);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+}
+
+.btn-lilac:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.text-center {
+    text-align: center;
+}

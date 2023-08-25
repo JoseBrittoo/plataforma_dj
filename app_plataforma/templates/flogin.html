@@ -40,9 +40,11 @@
                             <input class="btn btn-primary btn-lg" type="submit" value="Entrar">
                         </div>
                         <p class="mb-0 mt-4 text-center">
+                            Esqueceu sua senha? <a href="{% url 'password_reset' %}" class="link">Clique aqui</a> para redefinir.
+                        </p>
+                        <p class="mb-0 mt-4 text-center">
                             Ainda não possui Cadastro? <!-- Deixe este texto como comentário -->
-                            <a href="{% url 'cadusuario' %}" class="link">Inscreva-se!</a>
-                        </p>                        
+                        <a href="{% url 'cadusuario' %}" class="link">Inscreva-se!</a>                     
                     </form>
                 </div>
             </div>

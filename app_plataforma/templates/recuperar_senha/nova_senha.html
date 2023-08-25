@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'nova_senha.css' %}">
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <div class="division">
+                        <div class="row">
+                            <div class="col-12 text-center"><span>Nova Senha</span></div>
+                        </div>
+                    </div>
+                    <form class="myform">
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Nova Senha">
+                            <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirmar Nova Senha">
+                            <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <div class="text-center mt-4">
+                            <input class="btn btn-lilac btn-lg" type="submit" value="Redefinir Senha">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
