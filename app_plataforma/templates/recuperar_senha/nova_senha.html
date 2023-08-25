@@ -12,7 +12,7 @@
                             <div class="col-12 text-center"><span>Nova Senha</span></div>
                         </div>
                     </div>
-                    <form method="post" action="{% url 'partners:password_reset_confirm' uidb64=uid token=token %}" class="myform">
+                    <form method="post" action="{% url 'password_reset_confirm' uidb64='uidb64' token='token' %}" class="myform">
                         {% csrf_token %}
                         <div class="form-group">
                             <input type="password" class="form-control" name="password" id="password" placeholder="Nova Senha">
@@ -22,8 +22,8 @@
                             <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirmar Nova Senha">
                             <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <div class="text-center mt-4">
-                            <input class="btn btn-lilac btn-lg" type="submit" value="Redefinir Senha">
+                        <div class="text-center mt-4">   
+                            <a href="{% url 'password_reset_complete' %}" class="btn btn-lilac btn-lg">Concluir Redefinição</a>
                         </div>
                     </form>
                 </div>
