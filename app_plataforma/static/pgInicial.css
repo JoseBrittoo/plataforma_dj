@@ -1,0 +1,33 @@
+
+/* Estilos para a barra de navegação */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Estilos para o cabeçalho */
+h1.text-center {
+    font-size: 24px;
+    margin-top: 40px;
+    color: #333;
+}
+
+/* Estilos para os links de navegação */
+.navbar-nav .nav-link {
+    color: #333;
+}
+
+/* Estilos para os links de navegação quando hover */
+.navbar-nav .nav-link:hover {
+    color: #555;
+}
+
+/* Estilos para os botões */
+.btn {
+    margin: 5px;
+}
+
+/* Estilos para o corpo do conteúdo */
+.container {
+    padding: 20px;
+    background-color: #f8f9fa;
+}

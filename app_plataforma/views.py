@@ -125,7 +125,6 @@ from django.shortcuts import redirect
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = "recuperar_senha/nova_senha.html"
-
     def form_valid(self, form):
         response = super().form_valid(form)
         # Realizar ações adicionais após uma redefinição de senha bem-sucedida
