@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Curso(models.Model):
     nome_curso = models.CharField(max_length=100)

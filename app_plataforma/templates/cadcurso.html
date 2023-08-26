@@ -79,7 +79,6 @@
                 <textarea id="modulo_conteudo_${moduloCount}" name="modulos-TOTAL_FORMS-conteudo" rows="4" required></textarea>
                 <input type="hidden" id="id_modulos-INITIAL_FORMS" name="modulos-INITIAL_FORMS" value="0">
                 <button class="remover-modulo" data-modulo="${moduloCount}">Remover</button>
-                <button class="editar-modulo" data-modulo="${moduloCount}">Editar</button>
             `;
 
             document.getElementById('modulos').appendChild(moduloDiv);
@@ -88,12 +87,6 @@
             var removerBotao = moduloDiv.querySelector(`.remover-modulo[data-modulo="${moduloCount}"]`);
             removerBotao.addEventListener('click', function() {
                 moduloDiv.remove();
-            });
-            
-            // Adicionar um event listener para o botão "Editar" 
-            var editarBotao = moduloDiv.querySelector(`.editar-modulo[data-modulo="${moduloCount}"]`);
-            editarBotao.addEventListener('click', function() {
-                // Implementar a lógica de edição aqui 
             });
         }
     </script>

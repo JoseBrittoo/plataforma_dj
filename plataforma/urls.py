@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 from app_plataforma.views import home, cadusuario, usuario, flogin, dlogin, paginaInicial, logouts, alterarSenha, cadcurso, catalogocurso, detalhescurso
 from app_plataforma.views import CustomPasswordResetConfirmView
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
@@ -17,6 +18,7 @@ urlpatterns = [
     path('cadcurso/', cadcurso, name = 'cadcurso'),
     path('catalogocurso/', catalogocurso, name='catalogocurso'),
     path('curso/<int:curso_id>/', detalhescurso, name='detalhescurso'),
+
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="recuperar_senha/recuperar_senha.html"), name="reset_password"),
     path('reset_password_done/', auth_views.PasswordResetDoneView.as_view(template_name="recuperar_senha/redefinicao_enviada.html"), name="password_reset_done"),
