@@ -6,7 +6,6 @@ from .forms import CursoForm, ModuloFormSet
 from django.contrib.auth.views import PasswordResetConfirmView
 from django.shortcuts import redirect
 
-
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -134,6 +133,7 @@ def catalogocurso(request):
 def detalhescurso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     return render(request, 'detalhescurso.html', {'curso': curso})
+
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = "recuperar_senha/nova_senha.html"

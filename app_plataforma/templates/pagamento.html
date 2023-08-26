@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '.css' %}">
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card py-3 px-2">
+                <div class="division">
+                    <div class="row">
+                        <div class="col-12 text-center"><span>Pagamento</span></div>
+                    </div>
+                </div>
+                <p>Valor: R$ {{ curso.preco }}</p>
+                <form class="myform" method="post" action="{% url 'pagamento' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="card_number">Número do Cartão:</label>
+                        <input type="text" class="form-control" id="card_number" name="card_number" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="expiry_date">Data de Expiração:</label>
+                        <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/AA" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="card_holder_name">Nome do Titular:</label>
+                        <input type="text" class="form-control" id="card_holder_name" name="card_holder_name" required>
+                    </div>
+                    <div class="form-group mt-3 text-center">
+                        <button class="btn btn-block btn-primary btn-lg" type="submit">Fazer Pagamento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
