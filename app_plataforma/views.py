@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
 from .models import Curso, Modulo
 from .forms import CursoForm, ModuloFormSet
+from django.contrib.auth.views import PasswordResetConfirmView
+from django.shortcuts import redirect
 
 
 # Create your views here.
@@ -13,20 +15,33 @@ def home(request):
 def cadusuario(request):
     return render(request,'cadusuario.html')
 
-
 #Inserção dos dados dos usuários no banco
 def usuario(request):
-    data = {}
-    if(request.POST['password'] != request.POST['password-conf']):
-        data['msg'] = 'Senha e confirmação de senha diferentes!'
-        data['class'] = 'alert-danger'
-    else:
-        user = User.objects.create_user(request.POST['user'], request.POST['email'], request.POST['password'])
-        user.first_name = request.POST['name']
-        user.save()
-        data['msg'] = 'Usuário cadastrado com sucesso!'
-        data['class'] = 'alert-success'
-    return render(request,'cadusuario.html',data)
+    if request.method == 'POST':
+        group_choice = request.POST.get('group_choice')  # Obtém o valor do campo de seleção
+        if request.POST['password'] != request.POST['password-conf']:
+            data = {
+                'msg': 'Senha e confirmação de senha diferentes!',
+                'class': 'alert-danger'
+            }
+        else:
+            user = User.objects.create_user(
+                request.POST['user'], 
+                request.POST['email'],
+                request.POST['password']
+            )
+            user.first_name = request.POST['name']
+            user.save()
+            # Adicionar o usuário ao grupo escolhido (Professor ou Aluno)
+            grupo = get_object_or_404(Group, name=group_choice)
+            user.groups.add(grupo)
+
+            data = {
+                'msg': 'Usuário cadastrado com sucesso!',
+                'class': 'alert-success'
+            }
+        return render(request, 'cadusuario.html', data)
+
 
 #Formulário de cadastro de login
 def flogin(request):
@@ -120,9 +135,6 @@ def detalhescurso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
     return render(request, 'detalhescurso.html', {'curso': curso})
 
-from django.contrib.auth.views import PasswordResetConfirmView
-from django.shortcuts import redirect
-
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = "recuperar_senha/nova_senha.html"
     def form_valid(self, form):
@@ -130,4 +142,5 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
         # Realizar ações adicionais após uma redefinição de senha bem-sucedida
         # Redirecionar para a página de conclusão de redefinição de senha
         return redirect('password_reset_complete')
+
 
