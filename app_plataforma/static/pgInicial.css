@@ -1,33 +1,63 @@
-
-/* Estilos para a barra de navegação */
-.navbar {
-    margin-bottom: 20px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Estilos para o cabeçalho */
-h1.text-center {
-    font-size: 24px;
-    margin-top: 40px;
-    color: #333;
+body {
+    background-color: #212042;
 }
 
-/* Estilos para os links de navegação */
-.navbar-nav .nav-link {
-    color: #333;
+.custom-navbar {
+    background: #212042;
+    color: #F2CEFF;
+    padding: 20px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Estilos para os links de navegação quando hover */
-.navbar-nav .nav-link:hover {
-    color: #555;
+.custom-navbar .navbar-brand {
+    color: azure;
+    text-decoration: none;
 }
 
-/* Estilos para os botões */
-.btn {
-    margin: 5px;
+.custom-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilos para o corpo do conteúdo */
-.container {
-    padding: 20px;
-    background-color: #f8f9fa;
+.custom-nav .nav-item {
+    margin-right: 20px;
+}
+
+.custom-nav .nav-link {
+    text-decoration: none;
+    color: #F2CEFF;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.custom-nav .nav-link:hover {
+    color: #F2CEFF;
+    background: #f0f0f063;
+    border-radius: 4px;
+    transition: background 0.2s ease-in-out;
+}
+
+.text-center {
+    text-align: center;
+    color: azure;
+}
+
+p{
+    margin: 20px 4%;
+    text-align: center;
+    color: azure;  
+}
+
+.mt-4 {
+    margin-top: 20px;
 }

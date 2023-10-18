@@ -14,25 +14,9 @@ body {
     justify-content: center;
     align-items: center;
     border: none;
-    background: #2A284D;
+    background: #e4e4e4;
     height: 40px;
     width: 90px;
-}
-
-.fab:hover {
-    cursor: pointer;
-}
-
-.fa-twitter {
-    color: #56ABEC;
-}
-
-.fa-facebook {
-    color: #1775F1;
-}
-
-.fa-google {
-    color: #CB5048;
 }
 
 .division {
@@ -72,17 +56,19 @@ body {
 .form-control {
     border: 1px solid #57557A;
     border-radius: 3px;
-    background: #212042;
+    background:   #212042;
     margin-bottom: 20px;
     letter-spacing: 1px;
+    color: #fcf7f7
 }
 
+
 .form-control:focus {
-    border: 1px solid #57557A;
+    border: 1px solid #fefdff;
     border-radius: 3px;
     box-shadow: none;
-    background: #212042;
-    color: #fff;
+    background: #f4f4f5;
+    color: #030303;
     letter-spacing: 1px;
 }
 

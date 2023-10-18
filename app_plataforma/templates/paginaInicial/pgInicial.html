@@ -2,33 +2,30 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'pagInicial.css' %}">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<link rel="stylesheet" type="text/css" href="{% static 'pgInicial.css' %}">
+<div class="custom-navbar">
     <a class="navbar-brand" href="#">Plataforma</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    {% csrf_token %}
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/catalogocurso/">Catalogo de cursos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/cadcurso/">Cadastrar curso</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Forum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/alterarSenha/">Alterar Senha</a>
-            </li>
-            <li class="nav-item">
+    <ul class="custom-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/catalogocurso/">Catalogo de cursos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cadcurso/">Cadastrar curso</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Forum</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/alterarSenha/">Alterar Senha</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/logouts/">Sair</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+        </li>
+    </ul>
+</div>
 <h1 class="text-center mt-4">Área em processo de criação</h1>
+<p>O sucesso não se trata de grandeza. Se trata
+    de consistência. Com <br>trabalhado árduo alcança-se
+    sucesso. A grandeza vêm.
+</p>
 {% endblock %}

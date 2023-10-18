@@ -1,8 +1,14 @@
+
+
 .btn-lilac {
     background: linear-gradient(135deg, rgba(176,106,252,1) 39%, rgba(116,17,255,1) 101%);
     border: none;
     border-radius: 50px;
     color: #fff; 
+    cursor: pointer;
+    transition: .2s;
+    font-size: 18px;
+    padding: 10px 40px;
 }
 
 .btn-lilac:focus {
